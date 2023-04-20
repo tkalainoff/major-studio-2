@@ -131,8 +131,8 @@ const discData = [
     ]
 
 
-    disc {
-        camera,
+disc {
+    let camera,
         renderer,
         scene,
         controls,
@@ -267,7 +267,6 @@ const discData = [
           createLights();
           createMeshes();
           createRenderer();
-          createDiscs();
   
           controls = new THREE.OrbitControls(camera, renderer.domElement);
           invalidation.then(() => (controls.dispose(), renderer.dispose()));
@@ -285,13 +284,13 @@ const discData = [
        /***********************************************/
     }
   
-    // function onWindowResize() {
-    //     camera.aspect = width / height;;
-    //     camera.updateProjectionMatrix();
-    //     renderer.setSize(width, height)
-    // }
+    function onWindowResize() {
+        camera.aspect = width / height;;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height)
+    }
   
-    // window.addEventListener('resize', onWindowResize)
+    window.addEventListener('resize', onWindowResize)
 
     function animationLoop(){
       update();
@@ -300,16 +299,16 @@ const discData = [
     }
     
     renderer.domElement
-    // controls.update()
-    // controls.enableDamping = true;
-    // controls.dampingFactor = 0.05;
-    // controls.rotateSpeed = 0.1;
-    // renderer.setAnimationLoop(animationLoop)
+    controls.update()
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.rotateSpeed = 0.1;
+    renderer.setAnimationLoop(animationLoop)
     
-    // invalidation.then(() => {
-    //   controls.dispose();
-    //   renderer.dispose();
-    //   window.removeEventListener('resize', onWindowResize);
-    // });
-    // yield renderer.domElement
+    invalidation.then(() => {
+      controls.dispose();
+      renderer.dispose();
+      window.removeEventListener('resize', onWindowResize);
+    });
+    yield renderer.domElement
 }
