@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title> "Carousel-View-2" </title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<section id="carousel">
+		<div class="carousel carousel-1">
+			<div class="panel left-panel">
+				<div class="text-container">
+					<h2>Panel 2</h2>
+					<p>This is the first panel with text.</p>
+				</div>
+			</div>
+			<!-- Would need to update with correct html pages -->
+				<a class="arrow down-arrow-main" href="carousel-view-3.html"></a>
+				<a class="arrow up-arrow" href="index.html#carousel"></a>
+			<div class="panel right-panel">
+				<!-- Would need to uncomment the below canvas tag, if we get threeScene.js working -->
+				<!-- <canvas id="canvas"></canvas> -->
+				<!-- Would need to update the below code with correct observable notebook -->
+				<div id="observablehq-57fa173d"></div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<script src = "https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+	<!-- Would need to update the below code with correct observable notebook -->
+	<script type="module">
+		import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+		import define from "https://api.observablehq.com/d/389b051558aaf386@21.js?v=3";
+		new Runtime().module(define, Inspector.into("#observablehq-57fa173d"));
+		</script>
+</body>
+</html>

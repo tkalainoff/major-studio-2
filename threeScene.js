@@ -130,8 +130,6 @@ const discData = [
     }
     ]
 
-
-disc {
     let camera,
         renderer,
         scene,
@@ -310,5 +308,3 @@ disc {
       renderer.dispose();
       window.removeEventListener('resize', onWindowResize);
     });
-    yield renderer.domElement
-}
