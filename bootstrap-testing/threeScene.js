@@ -1,6 +1,7 @@
 
 // import * as THREE from 'three';
 // import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
+// import { WebGLBufferRenderer } from "three";
 import * as THREE from "../node_modules/three/build/three.module.js";
 // import * as THREE_ADDONS from "../node_modules/three-addons";
 // import { OrbitControls } from '/node_modules/three-addons/node_modules/three/examples/js/controls/OrbitControls.js';
@@ -261,14 +262,18 @@ const discData = [
         renderer = new THREE.WebGLRenderer({
             antialias: true
         });
+        
 
         // renderer.setSize(width, height);
-        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setSize( window.innerWidth/1.5, window.innerHeight/1.5 );
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.gammaFactor = 2.2;
         renderer.gammaOutput = true;
         renderer.useLegacyLights = true;
-        document.body.appendChild( renderer.domElement );
+
+        // add a HTML element to it 
+        const container = document.getElementById('three-container');
+        container.appendChild( renderer.domElement );
         console.log('test renderers!')
     }
   
@@ -296,8 +301,8 @@ const discData = [
   
     function update() {
        /*********** PUT ANIMATION LOGIC HERE **********/
-       discGroup.rotation.x += 0.01;
-       discGroup.rotation.y += 0.01;
+      //  discGroup.rotation.x += 0.01;
+      //  discGroup.rotation.y += 0.01;
       //  discGroup.rotation.z += 0.01;
        /***********************************************/
     }
