@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Bootstraping Test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="container-fluid p-0">
+		<div class="row">
+			<div class="col-md-6 carousel-panel left-panel d-flex align-items-center">
+				<div class="text-container">
+					<h2>Experiential View</h2>
+                    <h3>Each 3D form is made up of 30 discs.</h3>
+                    <h3>Each disc represents one year of media. </h3>
+                    <h3>Each disc contains three concentric circles.</h3>
+                    <div class="circle-container">
+                        <svg width="100" height="100">
+                          <circle cx="50" cy="50" r="10" fill="#333" />
+                        </svg>
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="20" fill="plum" />
+                        </svg>
+                        <svg width="100" height="100">
+                            <circle cx="50" cy="50" r="40" fill="whitesmoke" stroke="#333" stroke-width=".25px"/>
+                        </svg>
+                    </div>
+                      
+                    <!-- <p>The black most inner circle is the stories in the media of your selected filter (it is automatically set to experiences of mixed people).</p>
+					<p>The pink second circle is the collective stories of other people of color represented in the media.</p>
+                    <p>The white and final circle is the collective stories of white people represented in the media.</p> -->
+				</div>
+			</div>
+			<div class="col-md-6 carousel-panel right-panel">
+				<canvas id="canvas"></canvas>
+			</div>
+            <a class="arrow down-arrow-main" href="carousel-view-2.html"></a>
+			<a class="arrow up-arrow" href="#scrollytelling"></a>
+		</div>
+	</div>
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+	<script type="module" src="threeScene.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+</body>
+</html>

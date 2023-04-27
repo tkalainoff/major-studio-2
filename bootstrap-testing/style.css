@@ -1,0 +1,104 @@
+
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: semibold;
+    font-size: 36px;
+    color: #333;
+  }
+  
+.carousel {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.panel {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+	height: 100%;
+	transition: transform 0.5s ease;
+}
+
+.left-panel {
+	left: 0;
+	background-color: white;
+}
+
+.right-panel {
+	right: 0;
+	background-color: powderblue;
+}
+
+.carousel-panel {
+	height: 100vh;
+}
+
+.text-container {
+	padding: 20px;
+    height: 90vh;
+	color: #333;
+    background-color: white;
+}
+
+.circle-container {
+    position: relative;
+    width: 100px;
+    height: 300px;
+}
+
+.arrow {
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translateX(-50%) rotate(45deg);
+	width: 30px;
+	height: 30px;
+	border-bottom: 5px solid #333;
+	border-right: 5px solid #333;
+	transition: all 0.3s ease;
+	z-index: 10;
+}
+
+.down-arrow {
+	transform: translateX(-50%) rotate(45deg);
+	border-bottom: 5px solid white;
+	border-right: 5px solid white ;
+}
+
+.down-arrow-main {
+	transform: translateX(-50%) rotate(45deg);
+	border-bottom: 5px solid #333;
+	border-right: 5px solid #333;
+}
+
+.up-arrow {
+	transform: translateX(-50%) rotate(45deg);
+	top: 5%;
+	border-top: 5px solid #333;
+	border-left: 5px solid #333;
+	border-right: none;
+	border-bottom: none;
+	transition: all 0.3s ease;
+}
+
+.arrow:hover {
+	/* transform: translateY(50px); */
+	border-color: plum;
+}
+  
+
+.active .left-panel {
+	transform: translateX(-100%);
+}
+
+.active .right-panel {
+	transform: translateX(100%);
+}
+
+/* canvas {
+	
+
+}  */
