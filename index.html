@@ -11,34 +11,10 @@
 	<header id="landing">
 		<h1>To See/Be Seen</h1>
 		<p>Click the arrow to see the content.</p>
-		<a class="arrow down-arrow" href="#scrolly"></a>
+		<a class="arrow down-arrow" href="#scrollytelling"></a>
 	</header>
 
-	<section id="intro"></section>
-
-	<section id="scrolly">
-        <div class="sticky-thing">
-          <p>0</p>
-        </div>
-
-        <article>
-          <div class="step" data-step="1">
-            <p>Seeing yourself in the media you consume is important to identity formation</p>
-          </div>
-          <div class="step" data-step="2">
-            <p>Racially mixed people are the largest growing demographic in America</p>
-          </div>
-          <div class="step" data-step="3">
-            <p>Mixed Experiences often go unseen or misunderstood in media depictions</p>
-          </div>
-        </article>
-		<a class="arrow down-arrow-main" href="carousel-view-1.html"></a>
-		<a class="arrow up-arrow" href="#landing"></a>
-    </section>
-
-	<section id="outro"></section>
-
-	<!-- <section id="scrollytelling">
+	<section id="scrollytelling">
 		<div class="scollytelling scrolltelling-1">
 			<div class="text-container">
 				<h2>scrollytelling</h2>
@@ -48,7 +24,7 @@
 		<a class="arrow down-arrow-main" href="#carousel"></a>
 		<a class="arrow up-arrow" href="#landing"></a>
 	</div>
-	</section> -->
+	</section>
 
 	<section id="carousel">
 		<div class="carousel carousel-1">
@@ -60,22 +36,19 @@
 			</div>
 			<!-- Would need to update with correct html pages -->
 			<a class="arrow down-arrow-main" href="carousel-view-2.html"></a>
-			<a class="arrow up-arrow" href="#scrolly"></a>
+			<a class="arrow up-arrow" href="#scrollytelling"></a>
 			<div class="panel right-panel">
 			<!-- Would need to uncomment the below canvas tag, if we get threeScene.js working -->
-			<!-- <canvas id="canvas"></canvas> -->
+			<canvas id="canvas"></canvas>
 			<!-- Would need to update the below code with correct observable notebook -->
-			<div id="observablehq-disc-5c772378"></div>
+			<!-- <div id="observablehq-disc-5c772378"></div> -->
 			</div>
 		</div>
 	</section>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-	<!-- <script src="script.js"></script> -->
-	<script type= "module" src="script-scroll.js"></script>
+	<script src="script-scene.js"></script>
 	<script src = "https://d3js.org/d3.v4.min.js"></script>
-	<!-- <script src="https://unpkg.com/scrollama"></script> -->
-	<script src="../scrollama.min.js"></script>
 	<!-- Would need to update the below code with correct observable notebook -->
 	<script type="module">
 	import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";

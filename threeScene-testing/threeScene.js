@@ -1,24 +1,26 @@
 
 // import * as THREE from 'three';
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
+import * as THREE from "../node_modules/three/build/three.module.js";
+// import * as THREE_ADDONS from "../node_modules/three-addons";
+// import { OrbitControls } from '/node_modules/three-addons/node_modules/three/examples/js/controls/OrbitControls.js';
+// import { GLTFLoader } from 'node_modules/three-addons/node_modules/three/examples/js/loaders/GLTFLoader.js';
 
 // Test if browser is compatible with WebGL and THREE.js
 
-import { WebGL } from 'three/addons/capabilities/WebGL.js';
+// import { WebGL } from 'three/addons/capabilities/WebGL.js';
 
-if ( WebGL.isWebGLAvailable() ) {
+// if ( WebGL.isWebGLAvailable() ) {
 
-	// Initiate function or other initializations here
-	animate();
+// 	// Initiate function or other initializations here
+// 	animate();
 
-} else {
+// } else {
 
-	const warning = WebGL.getWebGLErrorMessage();
-	document.getElementById( 'container' ).appendChild( warning );
+// 	const warning = WebGL.getWebGLErrorMessage();
+// 	document.getElementById( 'container' ).appendChild( warning );
 
-}
+// }
 
 // data
 
@@ -130,6 +132,9 @@ const discData = [
     }
     ]
 
+
+// create scene and objects
+
     let camera,
         renderer,
         scene,
@@ -141,7 +146,8 @@ const discData = [
         renderRequested=false,
         mainLight,
         material,
-        height=1000;
+        width=500,
+        height=500;
   
     init();
 
@@ -152,10 +158,15 @@ const discData = [
         const near = 0.5; // the near clipping plane
         const far = 6000; // the far clipping plane
 
-        camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        camera.position.set(0, -300, 1550);
-        console.log('test!')
+        // camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+        camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, 0.5, 6000 );
+        camera.position.set(0, 0, 1550);
+        // camera.position.set(10, 10, 10);
+
+        // camera.position.z = 10;
+        console.log('test cameras!')
     } 
+    
     function createLights() {
         // Create a directional light
         const ambientLight = new THREE.HemisphereLight(0xddeeff, 0x202020, 9);
@@ -167,7 +178,9 @@ const discData = [
 
         // remember to add the light to the scene
         scene.add(ambientLight, mainLight);
+        console.log('test lights!')
     }
+
     function createMaterials(params) {
           const color = params&&params.color||0xff3333;
           const side = params&&params.side||THREE.DoubleSide;
@@ -191,6 +204,7 @@ const discData = [
         return {
             disc
         }
+        
     }
       
     function createMeshes() {
@@ -239,6 +253,7 @@ const discData = [
 
         // Add the mesh to the scene
         scene.add(group);
+        console.log('test meshes!')
     }
   
     function createRenderer() {
@@ -247,11 +262,14 @@ const discData = [
             antialias: true
         });
 
-        renderer.setSize(width, height);
+        // renderer.setSize(width, height);
+        renderer.setSize( window.innerWidth, window.innerHeight );
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.gammaFactor = 2.2;
         renderer.gammaOutput = true;
-        renderer.physicallyCorrectLights = true;
+        renderer.useLegacyLights = true;
+        document.body.appendChild( renderer.domElement );
+        console.log('test renderers!')
     }
   
     function init() {
@@ -265,20 +283,22 @@ const discData = [
           createLights();
           createMeshes();
           createRenderer();
+          console.log('test init!')
   
-          controls = new THREE.OrbitControls(camera, renderer.domElement);
-          invalidation.then(() => (controls.dispose(), renderer.dispose()));
+          // controls = new THREE.OrbitControls(camera, renderer.domElement);
+          // invalidation.then(() => (controls.dispose(), renderer.dispose()));
      }
   
     function render() {
         renderer.render(scene, camera);
+        // console.log('test render!')
     }
   
     function update() {
        /*********** PUT ANIMATION LOGIC HERE **********/
-       //cubeGroup.rotation.x += 0.01;
-       //cubeGroup.rotation.y += 0.01;
-       //cubeGroup.rotation.z += 0.01;
+       discGroup.rotation.x += 0.01;
+       discGroup.rotation.y += 0.01;
+      //  discGroup.rotation.z += 0.01;
        /***********************************************/
     }
   
@@ -286,6 +306,7 @@ const discData = [
         camera.aspect = width / height;;
         camera.updateProjectionMatrix();
         renderer.setSize(width, height)
+        console.log('test onWindowResize!')
     }
   
     window.addEventListener('resize', onWindowResize)
@@ -293,18 +314,19 @@ const discData = [
     function animationLoop(){
       update();
       render();
-      controls.update()
+      // console.log('test animationLoop!')
+      // controls.update()
     }
     
     renderer.domElement
-    controls.update()
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.rotateSpeed = 0.1;
+    // controls.update()
+    // controls.enableDamping = true;
+    // controls.dampingFactor = 0.05;
+    // controls.rotateSpeed = 0.1;
     renderer.setAnimationLoop(animationLoop)
     
-    invalidation.then(() => {
-      controls.dispose();
-      renderer.dispose();
-      window.removeEventListener('resize', onWindowResize);
-    });
+    // invalidation.then(() => {
+    //   controls.dispose();
+    //   renderer.dispose();
+    //   window.removeEventListener('resize', onWindowResize);
+    // });

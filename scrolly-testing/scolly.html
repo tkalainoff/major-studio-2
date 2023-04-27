@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Full Screen Carousel</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style-scroll.css">
+</head>
+<body>
+	<header id="landing">
+		<h1>To See/Be Seen</h1>
+		<p>Click the arrow to see the content.</p>
+		<a class="arrow down-arrow" href="#scrolly"></a>
+	</header>
+
+	<section id="intro"></section>
+
+	<section id="scrolly">
+        <div class="sticky-thing">
+          <p>0</p>
+        </div>
+
+        <article>
+          <div class="step" data-step="1">
+            <p>Seeing yourself in the media you consume is important to identity formation</p>
+          </div>
+          <div class="step" data-step="2">
+            <p>Racially mixed people are the largest growing demographic in America</p>
+          </div>
+          <div class="step" data-step="3">
+            <p>Mixed Experiences often go unseen or misunderstood in media depictions</p>
+          </div>
+        </article>
+		<a class="arrow down-arrow-main" href="carousel-view-1.html"></a>
+		<a class="arrow up-arrow" href="#landing"></a>
+    </section>
+
+	<section id="outro"></section>
+
+	<script type= "module" src="script-scroll.js"></script>
+	<script src = "https://d3js.org/d3.v4.min.js"></script>
+	<script src="../scrollama.min.js"></script>
+</body>
+</html>
