@@ -5,52 +5,62 @@
 // ANIMATION 1: SINGLE DOT
 //--------------------------------------------------
 
-let theta = 0
-let r = 100
-let n = 1
+// let theta = 0
+// let r = 100
+// let n = 1
 
-function setup() {
-  createCanvas(800, 800)
-  strokeWeight(10)
-  c = createVector(400, 400)
-}
+// function setup() {
+//   createCanvas(800, 800)
+//   strokeWeight(10)
+//   c = createVector(400, 400)
+// }
 
-function draw() {
-  background(220)
-  theta = theta + PI / 100
-  x = c.x + r * cos(theta)
-  y = c.y + r * sin(theta)
-  point(x, y)
-}
+// function draw() {
+//   background(220)
+//   theta = theta + PI / 100
+//   x = c.x + r * cos(theta)
+//   y = c.y + r * sin(theta)
+//   point(x, y)
+// }
 
 //--------------------------------------------------
 // ANIMATION 2: MULTIPLE DOTS
 //--------------------------------------------------
 
-// let theta = []
-// let r = 100
-// let c = []
-// let n = 5
+let theta = []
+let r = 300
+let c = []
+let n = 4
+let colors = ['#EC9DED', '#20B2A9', '#191970', '#404A4C']
 
-// function setup() {
-//   createCanvas(800, 800)
-//   strokeWeight(10)
-//   for (let i = 0; i < n; i++) {
-//     theta.push(random(0, 2 * PI))
-//     c.push(createVector(400, 400))
-//   }
-// }
+function setup() {
+  createCanvas(800, 800)
+  // strokeWeight(1)
+  for (let i = 0; i < n; i++) {
+    theta.push(random(0, 2 * PI))
+    c.push(createVector(400, 400))
+  }
+}
 
-// function draw() {
-//   background(220)
-//   for (let i = 0; i < n; i++) {
-//     theta[i] = theta[i] + PI / 200
-//     x = c[i].x + r * cos(theta[i])
-//     y = c[i].y + r * sin(theta[i])
-//     // point(x, y)
-//     square(x, y, 10)
-//   }
-// }
+function draw() {
+  background(255, 255, 255);
+  stroke(51);
+  strokeWeight(.5);
+  noFill();
+  circle(400, 400, 600);
+  
+  for (let i = 0; i < n; i++) {
+    theta[i] = theta[i] + PI / 500
+    x = c[i].x + r * cos(theta[i])
+    y = c[i].y + r * sin(theta[i])
+    circle(x, y, 100);
+    fill(colors[i]);
+    circle(x, y, 50);
+    fill(colors[i]);
+  }
+
+  
+}
 
 //--------------------------------------------------
 // ANIMATION 3: VARIABLE RADIUS
