@@ -40,7 +40,7 @@ function draw() {
   
   if (fade<0) fadeAmount=1; 
  
-  if (fade>255) fadeAmount=-100; 
+  if (fade>1500) fadeAmount=-100; 
  
   fade += fadeAmount; 
   print(fade)
