@@ -17,6 +17,11 @@ body {
   /* This centers our sketch vertically. */
   align-items: center;
 }
+
+#quote2{
+  display: block;
+}
+
 canvas {
   display: block;
   border-radius: 300px;

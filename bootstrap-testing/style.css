@@ -109,3 +109,35 @@ h1 {
     /* top: 100px; */
     /* left: 100px; */
 }
+
+/* Style for the pop-up message */
+#popup-message {
+	/* background-color: #fff; */
+	/* background-color: rgba(105, 167, 147, 0.2); */
+	background-color: rgba(255, 255, 255, 0.2);
+	/* background-color: rgba(165, 23, 255, 0.2); */
+	border-radius: 5px;
+	box-shadow: 0 2px 4px rgba(197, 97, 174, 0.846);
+	color: plum;
+	font-size: 1.2rem;
+	padding: 20px;
+	text-align: center;
+  }
+  
+  /* Style for the close button */
+  .close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	/* color: #333; */
+	color: plum;
+  }
+  
+  /* Style for the overlay background */
+  .modal-content {
+	/* background-color: (0, 0, 0, 0.5); */
+	background-color: rgba(105, 167, 147, 0.2);
+  }
+  
