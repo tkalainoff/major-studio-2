@@ -2,7 +2,7 @@
 // import * as THREE from 'three';
 // import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
 // import { WebGLBufferRenderer } from "three";
-import * as THREE from "../node_modules/three/build/three.module.js";
+import * as THREE from "../../node_modules/three/build/three.module.js";
 // import * as THREE_ADDONS from "../node_modules/three-addons";
 // import { OrbitControls } from '/node_modules/three-addons/node_modules/three/examples/js/controls/OrbitControls.js';
 // import { GLTFLoader } from 'node_modules/three-addons/node_modules/three/examples/js/loaders/GLTFLoader.js';
