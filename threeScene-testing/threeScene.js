@@ -1,4 +1,6 @@
 
+/*global d3*/
+import * as d3 from "../node_modules/d3/dist/d3.js"
 // import * as THREE from 'three';
 // import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
 import * as THREE from "../node_modules/three/build/three.module.js";
@@ -24,7 +26,7 @@ import * as THREE from "../node_modules/three/build/three.module.js";
 
 // data
 
-const discData = [
+const rawData = [
     {
       year: 2023,
       type: "multiracial",
@@ -132,6 +134,8 @@ const discData = [
     }
     ]
 
+discData = d3.groups(rawData, d => d.year)
+console.log(discData)
 
 // create scene and objects
 
@@ -140,7 +144,7 @@ const discData = [
         scene,
         controls,
         discMesh,
-        discGroup,
+        discGroup, 
         folder,
         renderOnDemand=true,
         renderRequested=false,
@@ -207,55 +211,102 @@ const discData = [
         
     }
       
-    function createMeshes() {
+//     Original function
+//     function createMeshes() {
         
-        const geometries = createGeometries();
-        // const geometries = addRadii();
-        const group = new THREE.Group();
+//         const geometries = createGeometries();
+//         // const geometries = addRadii();
+//         const group = new THREE.Group();
       
- [THREE.BackSide, THREE.FrontSide].forEach(side=>{
-        const meshes = [...new Array(15)]
-        // .map((d,i)=>i)
-        .map((d,i)=>{
-          // const geometries = createGeometries(radii[i]);
-          // const geometries = createGeometries(discsMultiracial[i]["radiusTop"], discsPoc[i]["radiusTop"]);
-          const geometries = createGeometries(discData[i]["radiusTop"]);
-          const materials = createMaterials({
-            // color:colors[i], 
-            // color: discsMultiracial[i]["color"],
-            // color: discsPoc[i]["color"],
-            color: discData[i]["color"],
-            side:side
-          });
-          const mesh =  new THREE.Mesh(
-            geometries.disc, 
-            materials.disc
-          );
-          return mesh;
-        })
+//  [THREE.BackSide, THREE.FrontSide].forEach(side=>{
+//         const meshes = [...new Array(15)]
+//         // .map((d,i)=>i)
+//         .map((d,i)=>{
+//           // const geometries = createGeometries(radii[i]);
+//           // const geometries = createGeometries(discsMultiracial[i]["radiusTop"], discsPoc[i]["radiusTop"]);
+//           const geometries = createGeometries(discData[i]["radiusTop"]);
+//           const materials = createMaterials({
+//             // color:colors[i], 
+//             // color: discsMultiracial[i]["color"],
+//             // color: discsPoc[i]["color"],
+//             color: discData[i]["color"],
+//             side:side
+//           });
+//           const mesh =  new THREE.Mesh(
+//             geometries.disc, 
+//             materials.disc
+//           );
+//           return mesh;
+//         })
         
-        meshes.forEach((m,i)=>{
-          const j = i;
-          const m1 = j*10;
-          // const m1 = j%2?1:-1;
-          // if i's remainder is equal to 1, m1 = 1, or else, m1 = -1
-          // const m2 = j%4<2?1:-1 ; 
-          // const m3 = j<=4?1:-1;
-          // m.position.set(unit * m3,unit * m2,unit*m1)
-          m.position.set(0, m1, 0)
-          group.add(m)
-        })
-  })
+//         meshes.forEach((m,i)=>{
+//           const j = i;
+//           const m1 = j*10;
+//           // const m1 = j%2?1:-1;
+//           // if i's remainder is equal to 1, m1 = 1, or else, m1 = -1
+//           // const m2 = j%4<2?1:-1 ; 
+//           // const m3 = j<=4?1:-1;
+//           // m.position.set(unit * m3,unit * m2,unit*m1)
+//           m.position.set(0, m1, 0)
+//           group.add(m)
+//         })
+//   })
       
-    
-       
-        discGroup = group;
+//         discGroup = group;
 
-        // Add the mesh to the scene
-        scene.add(group);
-        console.log('test meshes!')
-    }
-  
+//         // Add the mesh to the scene
+//         scene.add(group);
+//         console.log('test meshes!')
+//     }
+
+//  New function
+    function createMeshes() {
+      
+      const geometries = createGeometries();
+      const materials = createMaterials();
+
+      // make a group for all of the discs
+      const formGroup = new THREE.Group();
+      // make a group for one disc (with 3 meshes)
+      const discGroup = new THREE.Group();
+
+      // set yOffset to 0
+      let yOffset = 0
+        // loop through each year
+        const discYear = discData.map(d,i)=>{
+            // loop through each of the 3 raddii
+            [THREE.BackSide, THREE.FrontSide].forEach(side=>{
+              const mesh = discData.map((d,i)=>{
+                // geometries
+                geometries = createGeometries(discData[i]["radiusTop"]);
+                // materials
+                materials = createMaterials({
+                  color: discData[i]["color"],
+                  side:side
+                });
+                // mesh
+                const mesh =  new THREE.Mesh(
+                  geometries.disc, 
+                  materials.disc
+                  );
+              return mesh});
+
+              // Add the 3 meshes to the group
+              discGroup.add(mesh)
+              return discGroup
+            });
+
+          
+          // reposition group with offset
+          discGroup.position.set(0, yOffset + 10, 0)
+        }
+      // add the individual disc to the 3dform
+      formGroup.add(discGroup)
+      // Add the mesh to the scene
+      scene.add(formGroup);
+      console.log('test meshes!')
+};
+
     function createRenderer() {
         // create the renderer
         renderer = new THREE.WebGLRenderer({
