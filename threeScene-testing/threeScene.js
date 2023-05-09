@@ -1,6 +1,7 @@
 
 /*global d3*/
-import * as d3 from "../node_modules/d3/dist/d3.js"
+// import * as d3 from "../node_modules/d3/dist/d3.js"
+import * as d3 from 'https://unpkg.com/d3?module'
 // import * as THREE from 'three';
 // import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
 import * as THREE from "../node_modules/three/build/three.module.js";
@@ -26,116 +27,125 @@ import * as THREE from "../node_modules/three/build/three.module.js";
 
 // data
 
-const rawData = [
-    {
-      year: 2023,
-      type: "multiracial",
-      radiusTop: 10, 
-      radiusBottom: 10, 
-      color: "black"
-    },
-    {
-      year: 2022,
-      type: "multiracial",
-      radiusTop: 7, 
-      radiusBottom: 7, 
-      color: "black"
-    },
-    {
-      year: 2021,
-      type: "multiracial",
-      radiusTop: 7, 
-      radiusBottom: 7, 
-      color: "black"
-    },
-    {
-      year: 2020,
-      type: "multiracial",
-      radiusTop: 5, 
-      radiusBottom: 5, 
-      color: "black"
-    },
-    {
-      year: 2019,
-      type: "multiracial",
-      radiusTop: 2, 
-      radiusBottom: 2, 
-      color: "black"
-    },
-    {
-      year: 2023,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2022,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2021,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2020,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2019,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2023,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2022,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2021,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2020,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2019,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    }
-    ]
+// const rawData = [
+//     [{
+//       year: 2023,
+//       type: "multiracial",
+//       radiusTop: 10, 
+//       radiusBottom: 10, 
+//       color: "black"
+//     },
+//     {
+//       year: 2023,
+//       type: "poc",
+//       radiusTop: 25, 
+//       radiusBottom: 25, 
+//       color: "plum"
+//     },
+//     {
+//       year: 2023,
+//       type: "white",
+//       radiusTop: 100, 
+//       radiusBottom: 100, 
+//       color: "white"
+//     }],
+//     [{
+//       year: 2022,
+//       type: "multiracial",
+//       radiusTop: 7, 
+//       radiusBottom: 7, 
+//       color: "black"
+//     },
+//     {
+//       year: 2022,
+//       type: "poc",
+//       radiusTop: 25, 
+//       radiusBottom: 25, 
+//       color: "plum"
+//     },
+//     {
+//       year: 2022,
+//       type: "white",
+//       radiusTop: 100, 
+//       radiusBottom: 100, 
+//       color: "white"
+//     }],
+//     [{
+//       year: 2021,
+//       type: "multiracial",
+//       radiusTop: 7, 
+//       radiusBottom: 7, 
+//       color: "black"
+//     },
+//     {
+//       year: 2021,
+//       type: "poc",
+//       radiusTop: 25, 
+//       radiusBottom: 25, 
+//       color: "plum"
+//     },
+//     {
+//       year: 2021,
+//       type: "white",
+//       radiusTop: 100, 
+//       radiusBottom: 100, 
+//       color: "white"
+//     }],
 
-discData = d3.groups(rawData, d => d.year)
-console.log(discData)
+//     [{
+//       year: 2020,
+//       type: "multiracial",
+//       radiusTop: 5, 
+//       radiusBottom: 5, 
+//       color: "black"
+//     },
+//     {
+//       year: 2020,
+//       type: "poc",
+//       radiusTop: 25, 
+//       radiusBottom: 25, 
+//       color: "plum"
+//     },
+//     {
+//       year: 2020,
+//       type: "white",
+//       radiusTop: 100, 
+//       radiusBottom: 100, 
+//       color: "white"
+//     }]
+//     {
+//       year: 2019,
+//       type: "multiracial",
+//       radiusTop: 2, 
+//       radiusBottom: 2, 
+//       color: "black"
+//     },
+    
+    
+    
+    
+//     {
+//       year: 2019,
+//       type: "poc",
+//       radiusTop: 25, 
+//       radiusBottom: 25, 
+//       color: "plum"
+//     },
+    
+    
+    
+    
+//     {
+//       year: 2019,
+//       type: "white",
+//       radiusTop: 100, 
+//       radiusBottom: 100, 
+//       color: "white"
+//     }
+//     ]
+let rawData =[[{year:2023,type:"multiracial",radiusTop:10,radiusBottom:10,color:"black"},{year:2023,type:"poc",radiusTop:25,radiusBottom:25,color:"plum"},{year:2023,type:"white",radiusTop:100,radiusBottom:100,color:"white"}],[{year:2022,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},{year:2022,type:"white",radiusTop:100,radiusBottom:100,color:"white"},{year:2022,type:"poc",radiusTop:25,radiusBottom:25,color:"plum"}],[{year:2021,type:"white",radiusTop:100,radiusBottom:100,color:"white"},{year:2021,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},{year:2021,type:"poc",radiusTop:25,radiusBottom:25,color:"plum"}],[{year:2020,type:"multiracial",radiusTop:5,radiusBottom:5,color:"black"},{year:2020,type:"poc",radiusTop:25,radiusBottom:25,color:"plum"},{year:2020,type:"white",radiusTop:100,radiusBottom:100,color:"white"}],[{year:2019,type:"poc",radiusTop:25,radiusBottom:25,color:"plum"},{year:2019,type:"white",radiusTop:100,radiusBottom:100,color:"white"},{year:2019,type:"multiracial",radiusTop:2,radiusBottom:2,color:"black"}]];
+// let discData = d3.groups(rawData, d => d.year)
+// console.log(discData)
 
 // create scene and objects
 
@@ -262,26 +272,32 @@ console.log(discData)
 //  New function
     function createMeshes() {
       
-      const geometries = createGeometries();
-      const materials = createMaterials();
+      let geometries = createGeometries();
+      let materials = createMaterials();
 
       // make a group for all of the discs
       const formGroup = new THREE.Group();
+      
       // make a group for one disc (with 3 meshes)
       const discGroup = new THREE.Group();
-
+      
+      [THREE.BackSide, THREE.FrontSide].forEach(side=>{
       // set yOffset to 0
       let yOffset = 0
         // loop through each year
-        const discYear = discData.map(d,i)=>{
+        const discYear = rawData.map((year,i)=>{
+          
+          console.log(year)
             // loop through each of the 3 raddii
-            [THREE.BackSide, THREE.FrontSide].forEach(side=>{
-              const mesh = discData.map((d,i)=>{
+        
+              const meshes = year.map((yearObjects,j)=>{
+                console.log(yearObjects)
+                
                 // geometries
-                geometries = createGeometries(discData[i]["radiusTop"]);
+                geometries = createGeometries(yearObjects["radiusTop"]);
                 // materials
                 materials = createMaterials({
-                  color: discData[i]["color"],
+                  color: yearObjects["color"],
                   side:side
                 });
                 // mesh
@@ -292,20 +308,22 @@ console.log(discData)
               return mesh});
 
               // Add the 3 meshes to the group
-              discGroup.add(mesh)
-              return discGroup
+              discGroup.add(meshes)
             });
+              
+              return discGroup
+          });
 
           
           // reposition group with offset
           discGroup.position.set(0, yOffset + 10, 0)
-        }
+        // })
       // add the individual disc to the 3dform
       formGroup.add(discGroup)
       // Add the mesh to the scene
       scene.add(formGroup);
       console.log('test meshes!')
-};
+      }
 
     function createRenderer() {
         // create the renderer
