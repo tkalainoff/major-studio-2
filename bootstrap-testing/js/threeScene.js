@@ -1,11 +1,11 @@
 
-// import * as THREE from 'three';
-// import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.117.1/build/three.module.js';
-// import { WebGLBufferRenderer } from "three";
-import * as THREE from "../../node_modules/three/build/three.module.js";
+import * as THREE from 'three';
+
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// import { DoubleSide } from "../node_modules/three/build/three.module.js";
 // import * as THREE_ADDONS from "../node_modules/three-addons";
-// import { OrbitControls } from '/node_modules/three-addons/node_modules/three/examples/js/controls/OrbitControls.js';
-// import { GLTFLoader } from 'node_modules/three-addons/node_modules/three/examples/js/loaders/GLTFLoader.js';
+// import { GLTFLoader } from '../node_modules/three-addons/node_modules/three/examples/js/loaders/GLTFLoader.js';
 
 // Test if browser is compatible with WebGL and THREE.js
 
@@ -24,115 +24,70 @@ import * as THREE from "../../node_modules/three/build/three.module.js";
 // }
 
 // data
-
-const discData = [
-    {
-      year: 2023,
-      type: "multiracial",
-      radiusTop: 10, 
-      radiusBottom: 10, 
-      color: "black"
-    },
-    {
-      year: 2022,
-      type: "multiracial",
-      radiusTop: 7, 
-      radiusBottom: 7, 
-      color: "black"
-    },
-    {
-      year: 2021,
-      type: "multiracial",
-      radiusTop: 7, 
-      radiusBottom: 7, 
-      color: "black"
-    },
-    {
-      year: 2020,
-      type: "multiracial",
-      radiusTop: 5, 
-      radiusBottom: 5, 
-      color: "black"
-    },
-    {
-      year: 2019,
-      type: "multiracial",
-      radiusTop: 2, 
-      radiusBottom: 2, 
-      color: "black"
-    },
-    {
-      year: 2023,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2022,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2021,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2020,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2019,
-      type: "poc",
-      radiusTop: 25, 
-      radiusBottom: 25, 
-      color: "plum"
-    },
-    {
-      year: 2023,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2022,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2021,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2020,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    },
-    {
-      year: 2019,
-      type: "white",
-      radiusTop: 100, 
-      radiusBottom: 100, 
-      color: "white"
-    }
-    ]
-
+let rawData =[
+  [ {year:2023,type:"multiracial",radiusTop:10,radiusBottom:10,color:"black"},
+    {year:2023,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+    {year:2023,type:"white",radiusTop:100,radiusBottom:100,color:"white"}
+  ],
+  [ {year:2022,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},
+    {year:2022,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+    {year:2022,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"}
+  ],
+  [ {year:2021,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+    {year:2021,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},
+    {year:2021,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"}
+  ],
+  [ {year:2020,type:"multiracial",radiusTop:5,radiusBottom:5,color:"black"},
+    {year:2020,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+    {year:2020,type:"white",radiusTop:100,radiusBottom:100,color:"white"}
+  ],
+  [ {year:2019,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+    {year:2019,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+    {year:2019,type:"multiracial",radiusTop:2,radiusBottom:2,color:"black"}
+  ],
+  [ {year:2023,type:"multiracial",radiusTop:10,radiusBottom:10,color:"black"},
+  {year:2023,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+  {year:2023,type:"white",radiusTop:100,radiusBottom:100,color:"white"}
+],
+[ {year:2022,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},
+  {year:2022,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+  {year:2022,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"}
+],
+[ {year:2021,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+  {year:2021,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},
+  {year:2021,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"}
+],
+[ {year:2020,type:"multiracial",radiusTop:5,radiusBottom:5,color:"black"},
+  {year:2020,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+  {year:2020,type:"white",radiusTop:100,radiusBottom:100,color:"white"}
+],
+[ {year:2019,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+  {year:2019,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+  {year:2019,type:"multiracial",radiusTop:2,radiusBottom:2,color:"black"}
+],
+[ {year:2023,type:"multiracial",radiusTop:10,radiusBottom:10,color:"black"},
+{year:2023,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+{year:2023,type:"white",radiusTop:100,radiusBottom:100,color:"white"}
+],
+[ {year:2022,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},
+{year:2022,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+{year:2022,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"}
+],
+[ {year:2021,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+{year:2021,type:"multiracial",radiusTop:7,radiusBottom:7,color:"black"},
+{year:2021,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"}
+],
+[ {year:2020,type:"multiracial",radiusTop:5,radiusBottom:5,color:"black"},
+{year:2020,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+{year:2020,type:"white",radiusTop:100,radiusBottom:100,color:"white"}
+],
+[ {year:2019,type:"poc",radiusTop:25,radiusBottom:25,color:"Fuchsia"},
+{year:2019,type:"white",radiusTop:100,radiusBottom:100,color:"white"},
+{year:2019,type:"multiracial",radiusTop:2,radiusBottom:2,color:"black"}
+]
+];
+// let discData = d3.groups(rawData, d => d.year)
+// console.log(discData)
 
 // create scene and objects
 
@@ -140,8 +95,10 @@ const discData = [
         renderer,
         scene,
         controls,
+        formGroup,
+        invalidation,
         discMesh,
-        discGroup,
+        discGroup, 
         folder,
         renderOnDemand=true,
         renderRequested=false,
@@ -152,16 +109,20 @@ const discData = [
   
     init();
 
+
     function createCamera() {
         // Create a Camera
-        const fov = 15; // AKA Field of View  
+        const fov = 30; // AKA Field of View  
         const aspect = width / height;
         const near = 0.5; // the near clipping plane
         const far = 6000; // the far clipping plane
 
         // camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-        camera = new THREE.PerspectiveCamera( 15, window.innerWidth / window.innerHeight, 0.5, 6000 );
-        camera.position.set(0, 0, 1550);
+        camera = new THREE.PerspectiveCamera( 10, (window.innerWidth/2) / (window.innerHeight/2), 1, 6000 );
+        // camera.position.set(0, 300, 500);
+        // {x: 1112.7676355077217, y: 1278.949733627364, z: 2315.942070831095}
+        camera.position.set(116, 1500, 1966);
+        camera.lookAt(new THREE.Vector3(0,0,0)); // Set look at coordinate like this
         // camera.position.set(10, 10, 10);
 
         // camera.position.z = 10;
@@ -189,7 +150,7 @@ const discData = [
           const disc =  new THREE.MeshStandardMaterial({
               color: color,
               flatShading: false,
-              opacity: 0.5,
+              opacity: 0.18,
               transparent: true,
               side:side
           })
@@ -207,74 +168,67 @@ const discData = [
         }
         
     }
-      
+
+    //  New function2
     function createMeshes() {
-        
-        const geometries = createGeometries();
-        // const geometries = addRadii();
-        const group = new THREE.Group();
-      
- [THREE.BackSide, THREE.FrontSide].forEach(side=>{
-        const meshes = [...new Array(15)]
-        // .map((d,i)=>i)
-        .map((d,i)=>{
-          // const geometries = createGeometries(radii[i]);
-          // const geometries = createGeometries(discsMultiracial[i]["radiusTop"], discsPoc[i]["radiusTop"]);
-          const geometries = createGeometries(discData[i]["radiusTop"]);
-          const materials = createMaterials({
-            // color:colors[i], 
-            // color: discsMultiracial[i]["color"],
-            // color: discsPoc[i]["color"],
-            color: discData[i]["color"],
-            side:side
+
+      let yOffset = 0
+      let geometries = createGeometries();
+      let materials = createMaterials();
+      formGroup = new THREE.Group(); // create form group
+
+      const discs = rawData.map((year, i) => {  // loop through each year
+
+        const meshes = year.map((yearObjects, j) => { // loop through each cylinder (3)
+          
+          yOffset = i * 15 - j + 25 // adjust offset
+          const discGroup = new THREE.Group(); // create disc group for each year
+          // geometries
+          geometries = createGeometries(yearObjects["radiusTop"]);
+          // materials
+          materials = createMaterials({
+            color: yearObjects["color"],
+            side: THREE.DoubleSide
           });
-          const mesh =  new THREE.Mesh(
-            geometries.disc, 
+          // mesh
+          const mesh = new THREE.Mesh(
+            geometries.disc,
             materials.disc
           );
-          return mesh;
-        })
-        
-        meshes.forEach((m,i)=>{
-          const j = i;
-          const m1 = j*10;
-          // const m1 = j%2?1:-1;
-          // if i's remainder is equal to 1, m1 = 1, or else, m1 = -1
-          // const m2 = j%4<2?1:-1 ; 
-          // const m3 = j<=4?1:-1;
-          // m.position.set(unit * m3,unit * m2,unit*m1)
-          m.position.set(0, m1, 0)
-          group.add(m)
-        })
-  })
-      
     
-       
-        discGroup = group;
+          discGroup.add(mesh) // add each mesh to disc group
+          console.log('cylinder added to disc!')
 
-        // Add the mesh to the scene
-        scene.add(group);
-        console.log('test meshes!')
+          discGroup.position.set(0, yOffset, 0) // set the position of each disc group
+          console.log('position set!')
+
+          formGroup.add(discGroup) // add each disc to the form group
+        });
+
+      });
+    
+      scene.add(formGroup); // add the form group to the scene
+      console.log('test meshes!')
     }
-  
+
     function createRenderer() {
         // create the renderer
         renderer = new THREE.WebGLRenderer({
             antialias: true
         });
-        
 
         // renderer.setSize(width, height);
-        renderer.setSize( window.innerWidth/1.5, window.innerHeight/1.5 );
+        renderer.setSize( window.innerWidth, window.innerHeight );
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.gammaFactor = 2.2;
         renderer.gammaOutput = true;
         renderer.useLegacyLights = true;
-
+        
         // add a HTML element to it 
         const container = document.getElementById('three-container');
         container.appendChild( renderer.domElement );
         console.log('test renderers!')
+
     }
   
     function init() {
@@ -290,7 +244,7 @@ const discData = [
           createRenderer();
           console.log('test init!')
   
-          // controls = new THREE.OrbitControls(camera, renderer.domElement);
+          controls = new OrbitControls(camera, renderer.domElement);
           // invalidation.then(() => (controls.dispose(), renderer.dispose()));
      }
   
@@ -304,6 +258,10 @@ const discData = [
       //  discGroup.rotation.x += 0.01;
       //  discGroup.rotation.y += 0.01;
       //  discGroup.rotation.z += 0.01;
+
+      //  formGroup.rotation.x += 0.01;
+      //  formGroup.rotation.y += 0.01;
+      //  formGroup.rotation.z += 0.01;
        /***********************************************/
     }
   
@@ -315,7 +273,9 @@ const discData = [
     }
   
     window.addEventListener('resize', onWindowResize)
-
+    controls.addEventListener( "change", event => {  
+      console.log( controls.object.position ); 
+  }) 
     function animationLoop(){
       update();
       render();
@@ -324,10 +284,10 @@ const discData = [
     }
     
     renderer.domElement
-    // controls.update()
-    // controls.enableDamping = true;
-    // controls.dampingFactor = 0.05;
-    // controls.rotateSpeed = 0.1;
+    controls.update()
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.rotateSpeed = 0.1;
     renderer.setAnimationLoop(animationLoop)
     
     // invalidation.then(() => {
