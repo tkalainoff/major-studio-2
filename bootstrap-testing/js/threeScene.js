@@ -845,7 +845,7 @@ let rawData = [
     }
   
     window.addEventListener('resize', onWindowResize)
-  //   controls.addEventListener(change, event => {  
+  //   controls.addEventListener('change', event => {  
   //     console.log( controls.object.position ); 
   // }) 
     function animationLoop(){
